@@ -59,6 +59,7 @@
 .container{
     display: flex;
     flex-direction: row; /* 가로 방향으로 배치 */
+    flex-wrap: wrap; /* 화면 크기에 따라 줄 바꿈 */
 }
 .day-box{
     flex: 1;

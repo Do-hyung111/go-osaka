@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가계부</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="account-container">
+        <!-- 상단 헤더 -->
+        <header class="account-header">
+            <h1>가계부</h1>
+        </header>
+
+        <!-- 요약 자산 카드 -->
+        <section class="summary-card">
+            <div class="summary-item balance">
+                <span class="label">총 잔액</span>
+                <span id="total-balance" class="amount">0엔</span>
+            </div>
+            <div class="summary-divider"></div>
+            <div class="summary-item income">
+                <span class="label">총 수입</span>
+                <span id="total-income" class="amount">+0엔</span>
+            </div>
+            <div class="summary-item expense">
+                <span class="label">총 지출</span>
+                <span id="total-expense" class="amount">-0엔</span>
+            </div>
+        </section>
+
+        <!-- 내역 입력 폼 -->
+        <section class="input-section">
+            <h3>새 내역 추가</h3>
+            <form id="transaction-form">
+                <div class="input-group">
+                    <input type="date" id="date" required>
+                    <select id="type">
+                        <option value="expense">지출</option>
+                        <option value="income">수입</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="title" placeholder="항목명 (예: 점심 식사)" required>
+                    <input type="number" id="amount" placeholder="금액 입력 (엔)" required min="1">
+                </div>
+                <button type="submit" class="add-btn">추가하기</button>
+            </form>
+        </section>
+
+        <!-- 내역 리스트 -->
+        <section class="list-section">
+            <h3>사용 내역 목록</h3>
+            <ul id="transaction-list" class="transaction-list">
+                <!-- 자바스크립트로 항목이 여기에 추가됩니다 -->
+            </ul>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

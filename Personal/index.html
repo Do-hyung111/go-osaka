@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>개인별 프로필 사진 조회</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>개인별 사진 조회</h1>
+    
+    <!-- 이름 목록 버튼 -->
+    <div class="name-list">
+      <button class="name-btn active" onclick="showPerson('person1', this)">임채순</button>
+      <button class="name-btn" onclick="showPerson('person2', this)">김종명</button>
+      <button class="name-btn" onclick="showPerson('person3', this)">전덕선</button>
+      <button class="name-btn" onclick="showPerson('person4', this)">김준형</button>
+      <button class="name-btn" onclick="showPerson('person5', this)">김도형</button>
+    </div>
+
+    <!-- 사진 표시 영역 -->
+    <div class="photo-display">
+      
+      <!-- 임채순 사진들 -->
+      <div id="person1" class="person-gallery active">
+        <div class="slider-container">
+          <button class="nav-btn prev" onclick="changeSlide('person1', -1)">&lt;</button>
+          <div class="slide-content">
+            <img class="gallery-img" src="picture/비짓재팬_임채순.jpg" alt="임채순 사진 1">
+            <img class="gallery-img" src="person1_2.jpg" alt="임채순 사진 2" style="display:none;">
+          </div>
+          <button class="nav-btn next" onclick="changeSlide('person1', 1)">&gt;</button>
+        </div>
+        <p class="photo-info">임채순 님의 사진 (<span class="page-indicator">1</span>/2)</p>
+      </div>
+
+      <!-- 김종명 사진들 -->
+      <div id="person2" class="person-gallery">
+        <div class="slider-container">
+          <button class="nav-btn prev" onclick="changeSlide('person2', -1)">&lt;</button>
+          <div class="slide-content">
+            <img class="gallery-img" src="picture/비짓재팬_김종명.jpg" alt="김종명 사진 1">
+            <img class="gallery-img" src="person2_2.jpg" alt="김종명 사진 2" style="display:none;">
+          </div>
+          <button class="nav-btn next" onclick="changeSlide('person2', 1)">&gt;</button>
+        </div>
+        <p class="photo-info">김종명 님의 사진 (<span class="page-indicator">1</span>/2)</p>
+      </div>
+
+      <!-- 전덕선 사진들 -->
+      <div id="person3" class="person-gallery">
+        <div class="slider-container">
+          <button class="nav-btn prev" onclick="changeSlide('person3', -1)">&lt;</button>
+          <div class="slide-content">
+            <img class="gallery-img" src="picture/비짓재팬_전덕선.jpg" alt="전덕선 사진 1">
+            <img class="gallery-img" src="person3_2.jpg" alt="전덕선 사진 2" style="display:none;">
+          </div>
+          <button class="nav-btn next" onclick="changeSlide('person3', 1)">&gt;</button>
+        </div>
+        <p class="photo-info">전덕선 님의 사진 (<span class="page-indicator">1</span>/2)</p>
+      </div>
+
+      <!-- 김준형 사진들 -->
+      <div id="person4" class="person-gallery">
+        <div class="slider-container">
+          <button class="nav-btn prev" onclick="changeSlide('person4', -1)">&lt;</button>
+          <div class="slide-content">
+            <img class="gallery-img" src="picture/비짓재팬_김준형.jpg" alt="김준형 사진 1">
+            <img class="gallery-img" src="person4_2.jpg" alt="김준형 사진 2" style="display:none;">
+          </div>
+          <button class="nav-btn next" onclick="changeSlide('person4', 1)">&gt;</button>
+        </div>
+        <p class="photo-info">김준형 님의 사진 (<span class="page-indicator">1</span>/2)</p>
+      </div>
+
+      <!-- 김도형 사진들 -->
+      <div id="person5" class="person-gallery">
+        <div class="slider-container">
+          <button class="nav-btn prev" onclick="changeSlide('person5', -1)">&lt;</button>
+          <div class="slide-content">
+            <img class="gallery-img" src="picture/비짓재팬_김도형.jpg" alt="김도형 사진 1">
+            <img class="gallery-img" src="person5_2.jpg" alt="김도형 사진 2" style="display:none;">
+          </div>
+          <button class="nav-btn next" onclick="changeSlide('person5', 1)">&gt;</button>
+        </div>
+        <p class="photo-info">김도형 님의 사진 (<span class="page-indicator">1</span>/2)</p>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // 사람 선택 변경
+    function showPerson(personId, btn) {
+      const galleries = document.querySelectorAll('.person-gallery');
+      galleries.forEach(gallery => gallery.classList.remove('active'));
+
+      const buttons = document.querySelectorAll('.name-btn');
+      buttons.forEach(button => button.classList.remove('active'));
+
+      document.getElementById(personId).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // 슬라이드 사진 이동 (이전/다음)
+    function changeSlide(personId, direction) {
+      const gallery = document.getElementById(personId);
+      const images = gallery.querySelectorAll('.gallery-img');
+      const indicator = gallery.querySelector('.page-indicator');
+      
+      let currentIndex = 0;
+
+      // 현재 표시 중인 이미지 인덱스 찾기
+      images.forEach((img, index) => {
+        if (img.style.display !== 'none') {
+          currentIndex = index;
+        }
+      });
+
+      // 다음 인덱스 계산 (순환 구조)
+      images[currentIndex].style.display = 'none';
+      let nextIndex = (currentIndex + direction + images.length) % images.length;
+      images[nextIndex].style.display = 'block';
+
+      // 페이지 번호 업데이트
+      indicator.textContent = nextIndex + 1;
+    }
+  </script>
+
+</body>
+</html>

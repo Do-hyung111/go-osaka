@@ -28,12 +28,12 @@
         <div class="slider-container">
           <button class="nav-btn prev" onclick="changeSlide('person1', -1)">&lt;</button>
           <div class="slide-content">
-            <img class="gallery-img" src="picture/비짓재팬_임채순.jpg" alt="임채순 사진 1">
-            <img class="gallery-img" src="person1_2.jpg" alt="임채순 사진 2" style="display:none;">
+            <img class="gallery-img" src="picture/비짓재팬_임채순.jpg" alt="임채순 사진 1" data-caption="임채순 님의 비짓재팬">
+            <img class="gallery-img" src="picture/간사이조이패스1.png" alt="임채순 사진 2" data-caption="임채순 님의 간사이조이패스" style="display:none;">
           </div>
           <button class="nav-btn next" onclick="changeSlide('person1', 1)">&gt;</button>
         </div>
-        <p class="photo-info">임채순 님의 사진 (<span class="page-indicator">1</span>/2)</p>
+        <p class="photo-info">임채순 님의 비짓재팬</p>
       </div>
 
       <!-- 김종명 사진들 -->
@@ -41,12 +41,12 @@
         <div class="slider-container">
           <button class="nav-btn prev" onclick="changeSlide('person2', -1)">&lt;</button>
           <div class="slide-content">
-            <img class="gallery-img" src="picture/비짓재팬_김종명.jpg" alt="김종명 사진 1">
-            <img class="gallery-img" src="person2_2.jpg" alt="김종명 사진 2" style="display:none;">
+            <img class="gallery-img" src="picture/비짓재팬_김종명.jpg" alt="김종명 사진 1" data-caption="김종명 님의 비짓재팬">
+            <img class="gallery-img" src="picture/간사이조이패스2.png" alt="김종명 사진 2" data-caption="김종명 님의 간사이조이패스" style="display:none;">
           </div>
           <button class="nav-btn next" onclick="changeSlide('person2', 1)">&gt;</button>
         </div>
-        <p class="photo-info">김종명 님의 사진 (<span class="page-indicator">1</span>/2)</p>
+        <p class="photo-info">김종명 님의 비짓재팬</p>
       </div>
 
       <!-- 전덕선 사진들 -->
@@ -54,12 +54,12 @@
         <div class="slider-container">
           <button class="nav-btn prev" onclick="changeSlide('person3', -1)">&lt;</button>
           <div class="slide-content">
-            <img class="gallery-img" src="picture/비짓재팬_전덕선.jpg" alt="전덕선 사진 1">
-            <img class="gallery-img" src="person3_2.jpg" alt="전덕선 사진 2" style="display:none;">
+            <img class="gallery-img" src="picture/비짓재팬_전덕선.jpg" alt="전덕선 사진 1" data-caption="전덕선 님의 비짓재팬">
+            <img class="gallery-img" src="picture/간사이조이패스3.png" alt="전덕선 사진 2" data-caption="전덕선 님의 간사이조이패스" style="display:none;">
           </div>
           <button class="nav-btn next" onclick="changeSlide('person3', 1)">&gt;</button>
         </div>
-        <p class="photo-info">전덕선 님의 사진 (<span class="page-indicator">1</span>/2)</p>
+        <p class="photo-info">전덕선 님의 비짓재팬</p>
       </div>
 
       <!-- 김준형 사진들 -->
@@ -67,12 +67,12 @@
         <div class="slider-container">
           <button class="nav-btn prev" onclick="changeSlide('person4', -1)">&lt;</button>
           <div class="slide-content">
-            <img class="gallery-img" src="picture/비짓재팬_김준형.jpg" alt="김준형 사진 1">
-            <img class="gallery-img" src="person4_2.jpg" alt="김준형 사진 2" style="display:none;">
+            <img class="gallery-img" src="picture/비짓재팬_김준형.jpg" alt="김준형 사진 1" data-caption="김준형 님의 비짓재팬">
+            <img class="gallery-img" src="picture/간사이조이패스4.png" alt="김준형 사진 2" data-caption="김준형 님의 간사이조이패스" style="display:none;">
           </div>
           <button class="nav-btn next" onclick="changeSlide('person4', 1)">&gt;</button>
         </div>
-        <p class="photo-info">김준형 님의 사진 (<span class="page-indicator">1</span>/2)</p>
+        <p class="photo-info">김준형 님의 비짓재팬</p>
       </div>
 
       <!-- 김도형 사진들 -->
@@ -80,12 +80,12 @@
         <div class="slider-container">
           <button class="nav-btn prev" onclick="changeSlide('person5', -1)">&lt;</button>
           <div class="slide-content">
-            <img class="gallery-img" src="picture/비짓재팬_김도형.jpg" alt="김도형 사진 1">
-            <img class="gallery-img" src="person5_2.jpg" alt="김도형 사진 2" style="display:none;">
+            <img class="gallery-img" src="picture/비짓재팬_김도형.jpg" alt="김도형 사진 1" data-caption="김도형 님의 비짓재팬">
+            <img class="gallery-img" src="picture/간사이조이패스5.png" alt="김도형 사진 2" data-caption="김도형 님의 간사이조이패스" style="display:none;">
           </div>
           <button class="nav-btn next" onclick="changeSlide('person5', 1)">&gt;</button>
         </div>
-        <p class="photo-info">김도형 님의 사진 (<span class="page-indicator">1</span>/2)</p>
+        <p class="photo-info">김도형 님의 비짓재팬</p>
       </div>
 
     </div>
@@ -108,7 +108,7 @@
     function changeSlide(personId, direction) {
       const gallery = document.getElementById(personId);
       const images = gallery.querySelectorAll('.gallery-img');
-      const indicator = gallery.querySelector('.page-indicator');
+      const captionElement = gallery.querySelector('.photo-info');
       
       let currentIndex = 0;
 
@@ -124,8 +124,8 @@
       let nextIndex = (currentIndex + direction + images.length) % images.length;
       images[nextIndex].style.display = 'block';
 
-      // 페이지 번호 업데이트
-      indicator.textContent = nextIndex + 1;
+      // **data-caption 속성값으로 텍스트 업데이트**
+      captionElement.textContent = images[nextIndex].getAttribute('data-caption');
     }
   </script>
 
